@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +104,32 @@ a {
   html {
     color-scheme: dark;
   }
+} */
+
+html {
+  min-height: 100%;
+}
+
+@font-face {
+  font-family: 'druk';
+  src: url('/DrukText-Heavy.woff2') format('woff2'),
+      url('/DrukText-Heavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'druk', sans-serif;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+}
+
+body > * {
+  min-height: 100vh;
+}
+
+p {
+  color: #666;
 }
