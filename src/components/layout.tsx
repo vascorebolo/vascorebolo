@@ -29,7 +29,7 @@ export default function Layout<IBodyProps>({ title = '', children = <></> }) {
         <MainWrapper>
           <h1>
             <Link href="/">Vasco Rebolo</Link>
-            <span> / { title ? title : '~' }</span>
+            <span> <b>/</b> { title ? title : '~' }</span>
           </h1>
         </MainWrapper>
       </SHeader>

@@ -23,6 +23,10 @@ const SHeader = styled.div`
 
     span {
       color: ${({ theme }) => theme.grey500 };
+
+      b {
+        color: ${({ theme }) => theme.red};
+      }
     }
   }
 `;

@@ -14,14 +14,19 @@ const SGallery = styled.div`
     align-items: center;
 
     img {
-      width: 45vw;
-      height: 45vw;
+      width: 60vw;
+      height: 60vw;
       max-width: 1000px;
       max-height: 1000px;
       display: block;
       min-width: 375px;
       min-height: 375px;
     }
+  }
+
+  .blanker {
+    background: tomato;
+    height: 100vh;
   }
 `;
 

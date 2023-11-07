@@ -4,8 +4,9 @@ import path from 'path';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
 import SGallery from './gallery.styles';
-import { galleries } from './galleries';
+import { galleries } from '../../data/galleries';
 import MainWrapper from '@/components/containers/main-wrapper';
+import Image from 'next/image';
 
 interface GalleryInfo {
   id: string;
@@ -31,6 +32,7 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
   if (router.isFallback) {
     return <div>loading...</div>
   }
+
   return (
     <Layout title={galleryInfo?.title ?? galleryTitle}>
       <SGallery>
@@ -39,8 +41,16 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
             <p>{galleryInfo?.description}</p>
           </MainWrapper>
           {images.map((image, index) => (
-            <img key={index} src={image.path} alt={image.name} width={1000} height={1000} style={{ position: 'sticky', top: '54px'}} />
+            <Image
+              key={index}
+              src={image.path}
+              alt={image.name}
+              width={1000}
+              height={1000}
+              style={{ position: 'sticky', top: '54px'}}
+            />
           ))}
+          <div className="blanker"></div>
         </div>
       </SGallery>
     </Layout>
@@ -62,6 +72,8 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<{ 
   const imageDirectory = path.join(process.cwd(), `public/photos/${id}`);
   const imageFiles = fs.readdirSync(imageDirectory);
   const galleryInfo: GalleryInfo | undefined = galleries.find(gallery => gallery.id === id);
+
+  console.log(galleryInfo)
 
   const images: Image[] = imageFiles.map((file) => ({
     name: file,

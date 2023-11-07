@@ -8,64 +8,86 @@ const SListOfGalleries = styled.ul`
   list-style: none;
   margin: 0 0.5;
   padding: 0;
+  --depth: 2vw;
 
   li {
-    font-size: calc(25px + 2vw);
+    font-size: calc(25px + 1.5vw);
     line-height: 110%;
-    margin: 2vh 0;
+    margin: 2vw 0;
     padding: 0;
     position: relative;
     text-align: center;
     transform: rotate(-0.002turn);
 
-    &.last {
-      margin-top: 5vw;
-    }
-
-    &.new a:after {
-      content: 'NEW';
-      display: inline-block;
-      background: ${({ theme }) => theme.red };
-      color: ${({ theme }) => theme.white };
-      font-size: 10px;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      letter-spacing: 1px;
-      line-height: 30px;
-      position: absolute;
-      top: -7px
-    }
-
-    &.special {
-      padding: 10px 30px;
-
-      a {
-        background-color: ${({ theme }) => theme.grey500 };
-        color: ${({ theme }) => theme.white };
-
-        &:hover {
-          background-color: ${({ theme }) => theme.grey100 };
-          color: ${({ theme }) => theme.white };
-        }
-      }
-    }
-
-    &:nth-child(odd) {
-      transform: rotate(+0.005turn);
-    }
-
     a {
-      color: ${({ theme }) => theme.grey500 };
-      padding: 1vw 3vw;
+      background-color: ${({ theme }) => theme.grey500 };
+      color: ${({ theme }) => theme.white };
+      padding-bottom: var(--depth);
+      padding-left: calc(var(--depth) + 1vw);
+      padding-right: 1.5vw;
+      padding-top: 1vw;
+      position: relative;
       text-decoration: none;
       text-transform: uppercase;
       transform: rotate(-0.15turn);
       transition: 0.3s linear;
 
       &:hover {
-        color: ${({ theme }) => theme.grey100 };
+        --depth: 2.5vw;
+        background-color: ${({ theme }) => theme.grey100 };
       }
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 0;
+        transition: 0.3s linear;
+      }
+
+      &::before {
+        left: -1px;
+        top: -1px;
+        border-top: var(--depth) solid ${({ theme }) => theme.white};
+        border-right: var(--depth) solid transparent;
+      }
+
+      &::after {
+        right: -1px;
+        bottom: -1px;
+        border-bottom: var(--depth) solid ${({ theme }) => theme.white};
+        border-left: var(--depth) solid transparent;
+      }
+    }
+
+    &.last {
+      margin-top: 5vw;
+    }
+
+    &.new::after {
+      align-items: center;
+      background: ${({ theme }) => theme.red};
+      color: ${({ theme }) => theme.white};
+      content: 'NEW';
+      display: block;
+      display: flex;
+      font-size: 12px;
+      height: 30px;
+      justify-content: center;
+      letter-spacing: 2px;
+      padding: 0 5px;
+      position: absolute;
+      right: -20px;
+      top: -20px;
+    }
+
+    &.special a {
+      background-color: ${({ theme }) => theme.red}
+    }
+
+    &:nth-child(odd) {
+      transform: rotate(+0.006turn);
     }
   }
 `
