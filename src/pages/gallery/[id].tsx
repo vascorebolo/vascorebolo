@@ -47,7 +47,7 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
               alt={image.name}
               width={1000}
               height={1000}
-              style={{ position: 'sticky', top: '54px'}}
+              style={{ position: 'sticky', top: '20vh'}}
             />
           ))}
           <div className="blanker"></div>

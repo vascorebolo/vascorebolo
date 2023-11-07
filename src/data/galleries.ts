@@ -14,10 +14,10 @@ export const galleries = [
     isSpecial: false,
   },
   {
-    id: 'gallery_2',
-    title: 'Uma galeria',
-    description: 'something 2',
-    isNew: false,
+    id: 'gallery_3',
+    title: 'ST BARBARA GARDEN',
+    description: 'Photos taken through the course of one year in the Jardim de Santa Bárbara, Braga, Portugal.',
+    isNew: true,
     isSpecial: false,
   },
 ]
