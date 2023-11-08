@@ -73,8 +73,6 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<{ 
   const imageFiles = fs.readdirSync(imageDirectory);
   const galleryInfo: GalleryInfo | undefined = galleries.find(gallery => gallery.id === id);
 
-  console.log(galleryInfo)
-
   const images: Image[] = imageFiles.map((file) => ({
     name: file,
     path: `/photos/${id}/${file}`,

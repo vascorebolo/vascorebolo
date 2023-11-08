@@ -1,6 +1,5 @@
 // import Image from 'next/image'
 import { Inter } from 'next/font/google'
-// import styles from '@/styles/Home.module.css'
 import Layout from '@/components/layout'
 import { galleries } from '@/data/galleries'
 import SListOfGalleries from '@/components/list';
