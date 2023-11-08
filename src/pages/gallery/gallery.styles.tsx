@@ -13,6 +13,16 @@ const SGallery = styled.div`
     justify-content: center;
     align-items: center;
 
+    .image-wrapper {
+      height: 85vh;
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        height: 100vh;
+      }
+    }
+
     img {
       display: block;
       height: auto;
@@ -20,7 +30,6 @@ const SGallery = styled.div`
       max-width: 800px;
       min-width: 320px;
       width: 60vw;
-      margin: 5vw 0;
     }
   }
 

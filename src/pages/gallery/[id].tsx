@@ -41,16 +41,17 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
             <p>{galleryInfo?.description}</p>
           </MainWrapper>
           {images.map((image, index) => (
-            <Image
-              key={index}
-              src={image.path}
-              alt={image.name}
-              width={1000}
-              height={1000}
-              style={{ position: 'sticky', top: '20vh'}}
-            />
+            <div className="image-wrapper" key={index}>
+              <Image
+                src={image.path}
+                alt={image.name}
+                width={1000}
+                height={1000}
+                style={{ position: 'sticky', top: '20vh'}}
+              />
+            </div>
           ))}
-          <div className="blanker"></div>
+          {/* <div className="blanker"></div> */}
         </div>
       </SGallery>
     </Layout>
