@@ -8,15 +8,15 @@ import MainWrapper from './containers/main-wrapper/main-wrapper';
 
 const SMain = styled.main`
   min-height: 10vh;
-  padding-top: 10vh;
 `
 
 interface IBodyProps {
   title?: string;
   children: React.ReactNode;
+  className: string;
 };
 
-export default function Layout<IBodyProps>({ title = '', children = <></> }) {
+export default function Layout<IBodyProps>({ title = '', children = <></>, className = '' }) {
   return (
     <>
       <Head>
@@ -26,7 +26,7 @@ export default function Layout<IBodyProps>({ title = '', children = <></> }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SHeader>
-        <MainWrapper>
+        <MainWrapper className={className}>
           <h1>
             <Link href="/">Vasco Rebolo</Link>
             <span> <b>/</b> { title ? title : '~' }</span>

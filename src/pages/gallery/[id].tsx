@@ -7,6 +7,7 @@ import SGallery from './gallery.styles';
 import { galleries } from '../../data/galleries';
 import MainWrapper from '@/components/containers/main-wrapper';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface GalleryInfo {
   id: string;
@@ -28,20 +29,70 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
   const router = useRouter();
   const { query: { id }} = router;
   const galleryTitle = (id as string).replaceAll('_', ' ');
+  const [currentPhoto, setCurrentPhoto] = useState(1);
+  const nrOfPhotos = images.length;
+
+  // useEffect(() => {
+  //   window.addEventListener('scrollend', handleScrollEnd);
+
+  //   return () => {
+  //     window.removeEventListener('scrollend', handleScrollEnd);
+  //   };
+  // }, []);
+
+
+  useEffect(() => {
+    const elem = document.getElementById(`photo-${currentPhoto}`);
+
+    window?.scrollTo({top: elem?.offsetTop, behavior: 'smooth'});
+  }, [currentPhoto]);
 
   if (router.isFallback) {
     return <div>loading...</div>
   }
 
+  // const handleScrollEnd = () => {
+  //   console.log(window.scrollY);
+  // };
+
+  const handleGalleryNav = (down: boolean) => {
+    if (down && currentPhoto < nrOfPhotos) {
+      setCurrentPhoto(currentPhoto + 1);
+    } else if (!down && currentPhoto > 1) {
+      setCurrentPhoto(currentPhoto - 1);
+    }
+  };
+
+
   return (
     <Layout title={galleryInfo?.title ?? galleryTitle}>
       <SGallery>
-        <div className="gallery-photos">
-          <MainWrapper>
-            <p>{galleryInfo?.description}</p>
-          </MainWrapper>
+        <div className="gallery-buttons">
+          <button
+            onClick={() => { handleGalleryNav(false)}}
+            disabled={currentPhoto === 1}
+          >
+            ▲
+          </button>
+          <button
+            onClick={() => { handleGalleryNav(true)}}
+            disabled={currentPhoto === nrOfPhotos}
+          >
+            ▼
+          </button>
+        </div>
+        <div className="gallery-photos" id="gallery-scroll">
+          <div className="image-wrapper" id="photo-1">
+            <MainWrapper className="gallery-description">
+              <p>{galleryInfo?.description}</p>
+            </MainWrapper>
+          </div>
           {images.map((image, index) => (
-            <div className="image-wrapper" key={index}>
+            <div
+              className="image-wrapper"
+              key={index}
+              id={`photo-${index + 2}`}
+            >
               <Image
                 src={image.path}
                 alt={image.name}
@@ -51,7 +102,6 @@ function Gallery({ images, galleryInfo }: GalleryProps) {
               />
             </div>
           ))}
-          {/* <div className="blanker"></div> */}
         </div>
       </SGallery>
     </Layout>

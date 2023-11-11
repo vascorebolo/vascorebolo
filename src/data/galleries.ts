@@ -16,7 +16,7 @@ export const galleries = [
   {
     id: 'gallery_3',
     title: 'ST BARBARA GARDEN',
-    description: 'Photos taken through the course of one year in the Jardim de Santa Bárbara, Braga, Portugal.',
+    description: 'Photos taken through the course of one year in the Jardim de Santa Barbara, Braga, Portugal.',
     isNew: true,
     isSpecial: false,
   },

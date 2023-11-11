@@ -73,13 +73,15 @@ const SListOfGalleries = styled.ul`
       display: block;
       display: flex;
       font-size: 12px;
-      height: 30px;
+      height: 35px;
+      width: 35px;
       justify-content: center;
       letter-spacing: 2px;
-      padding: 0 5px;
+      /* padding: 0 5px; */
       position: absolute;
       right: -20px;
       top: -20px;
+      border-radius: 50%;
     }
 
     &.special a {
